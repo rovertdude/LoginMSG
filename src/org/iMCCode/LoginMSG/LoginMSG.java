@@ -25,7 +25,8 @@ public class LoginMSG extends JavaPlugin {
 			player.sendMessage(ChatColor.AQUA + "Login" + ChatColor.DARK_RED + "MSG");
 			player.sendMessage(ChatColor.DARK_RED + "Created by" + ChatColor.GRAY + ": " + ChatColor.GREEN + "iHess§7,§a MathBoy§7, and the §5iMCCode Development Team");
 			player.sendMessage(ChatColor.YELLOW + "'When a player logins, the LoginMSG plugin will add a cool touch to their welcome message motd'");
-
+			return true;
+			
 		}
 		return false;	
 		
