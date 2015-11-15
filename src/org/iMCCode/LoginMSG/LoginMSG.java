@@ -10,7 +10,7 @@ public class LoginMSG extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		new ListenerClass(this);
+		new LoginListener(this);
 	}
 	
 	@Override
