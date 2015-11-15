@@ -24,9 +24,8 @@ public class LoginListener implements Listener {
 		      Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "MathBoy" + ChatColor.GRAY + ", " + ChatColor.GRAY + " is the " + ChatColor.BLUE + "Co Founder " + ChatColor.GRAY + "of " + ChatColor.DARK_PURPLE + " iMCCode Development Team");
 		      Bukkit.broadcastMessage(ChatColor.GREEN + "He, and iHess, made the LoginMSG plugin!");
 		  }
-		      
-		
-		Player player = e.getPlayer();
+
+		Player player1 = e.getPlayer();
 		if (player.getName().equalsIgnoreCase("iHess"))
         {
             player.setPlayerListName(ChatColor.DARK_RED + "iHess");
