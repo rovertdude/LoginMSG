@@ -1,1 +1,10 @@
-
+name: LoginMSG
+main: org.iMCCode.LoginMSG.LoginMSG 
+version: 0.1
+description: Used for login messages
+authors: [iHess, MathBoy]
+depend: [Spigot]
+commands:
+   loginmsg:
+     description: Shows information about the LoginMSG plugin.
+     usage: /<command>
