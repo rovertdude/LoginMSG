@@ -1,35 +1,47 @@
 package org.iMCCode.LoginMSG;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
-public class LoginMSG extends JavaPlugin {
-
-	@Override
-	public void onEnable() {
-		new LoginListener(this);
+public class LoginListener implements Listener {
+	
+	public LoginListener(LoginMSG plugin) {
+		plugin.getServer().getPluginManager().registerEvents(this, plugin);	
 	}
 	
-	@Override
-	public void onDisable() {
-		
-	}
-	
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Player player = (Player) sender;
-		if (cmd.getName().equalsIgnoreCase("loginmsg")){
-			 
-			player.sendMessage(ChatColor.AQUA + "Login" + ChatColor.DARK_RED + "MSG");
-			player.sendMessage(ChatColor.DARK_RED + "Created by" + ChatColor.GRAY + ": " + ChatColor.GREEN + "iHess§7,§a MathBoy§7, and the §5iMCCode Development Team");
-			player.sendMessage(ChatColor.YELLOW + "'When a player logins, the LoginMSG plugin will add a cool touch to their welcome message motd'");
-			return true;
-			
+	@EventHandler
+	public void onEvent(PlayerJoinEvent e) {
+		Player player = e.getPlayer();
+		if (player.getName().equalsIgnoreCase("iHess"))
+        {
+            player.setPlayerListName(ChatColor.DARK_RED + "iHess");
+            player.setDisplayName("iHess");
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "iHess" + ChatColor.GRAY + "," + ChatColor.GRAY + " is the " + ChatColor.DARK_RED + "Founder " + ChatColor.GRAY + "of" + ChatColor.DARK_PURPLE + " iMCCode Development Team");
+            Bukkit.broadcastMessage(ChatColor.GREEN + "He, and MathBoy, made the LoginMSG plugin!");
+        }
+    }
+    @EventHandler
+    public void onEvent1(PlayerJoinEvent e) {
+		Player player;player = e.getPlayer();
+		if (player.getName().equalsIgnoreCase("mathboy601"))
+		  {
+		      player.setPlayerListName(ChatColor.DARK_PURPLE + "mathboy601");
+		      player.setDisplayName("mathboy601");
+		      Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "MathBoy" + ChatColor.GRAY + ", " + ChatColor.GRAY + " is the " + ChatColor.BLUE + "Co Founder " + ChatColor.GRAY + "of " + ChatColor.DARK_PURPLE + " iMCCode Development Team");
+		      Bukkit.broadcastMessage(ChatColor.GREEN + "He, and iHess, made the LoginMSG plugin!");
+		  }
+		            
+		//If an old player (who already logged into the server) will enter with this:
+		if (player.hasPlayedBefore() == true){
+		e.setJoinMessage(ChatColor.GREEN + "Welcome back" + ChatColor.GRAY + ", " + ChatColor.AQUA + player.getName() + ChatColor.GRAY + " to the" + ChatColor.LIGHT_PURPLE + " Server");
 		}
-		return false;	
-		
+		//If a new player log-ins into the server, this well be announced:
+		if (player.hasPlayedBefore() == false){
+		e.setJoinMessage(ChatColor.GREEN + "Welcome" + ChatColor.GRAY + ", " + ChatColor.AQUA + player.getName() + ChatColor.GRAY + ", to the " + ChatColor.LIGHT_PURPLE + "Server!");
+}
 	}
-	
 }
